@@ -8,8 +8,8 @@
       "z-index:3000;position:fixed;left:0;top:0;height:100%;width:100%;background:rgba(255,255,255,0.3);display:flex;flex-flow:column;justify-content:center;align-items:center;user-select:none;color:rgb(0,0,0,0.8)";
     var hideStyle = "display:none;";
     var spinnerBaseStyle =
-      "transition: all 100s linear; height: 25px; width: 25px; background:url(https://static.yximgs.com/udata/pkg/IS-DOCS/spinner.png); background-size: contain;";
-    var spinnerAdd = spinnerBaseStyle + "transform: rotate(14000deg);";
+      "transition: all 100000s linear; height: 25px; width: 25px; background:url(https://static.yximgs.com/udata/pkg/IS-DOCS/spinner.png); background-size: contain;";
+    var spinnerAdd = spinnerBaseStyle + "transform: rotate(14000000deg);";
   
     if (typeof window !== "undefined") {
       // 说明是在 浏览器中

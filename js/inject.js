@@ -127,12 +127,8 @@
       link.href = url;
       link.download =
         "流程图" +
-        new Date()
-          .toLocaleString()
-          .replace("/", "-")
-          .replace("/", "-")
-          .replace(" ", "") +
-        "(打开并复制文本，在流程图编辑窗口黏贴)" +
+        new Date(Date.now() + 28800000).toISOString().replace(/T/, ' ').replace(/\..+/, '').replace(/ /g, '').replace(/:/g, '').replace(/-/g, '').slice(4) +
+        "-复制文字粘贴到流程图编辑界面" +
         ".txt";
       link.click();
     }
@@ -199,7 +195,7 @@
         if (msg.action == "savelocal") {
             showConfirm({
               text:
-                "网络保存失败，是否保存到本地，后续可将保存的文本在窗口黏贴进行恢复",
+                "网络异常，请先保存到本地，稍后重试",
               onConfirm() {
                 saveLocal(msg.content);
                 hideLoading();
@@ -207,6 +203,8 @@
               onRefuse() {
                 hideLoading();
               },
+              refuseBtnText: '取消',
+              confirmBtnText: '保存到本地'
             });
           }
       });

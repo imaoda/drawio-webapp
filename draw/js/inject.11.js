@@ -49,11 +49,11 @@
   // 确认询问
   var confirmDOM = null;
   var confirmStyle =
-    "z-index:3002;position:fixed;left:0;top:0;height:100%;width:100%;background:rgba(255,255,255,0.3);display:flex;flex-flow:column;justify-content:center;align-items:center;color:rgb(0,0,0,0.8); font-size: 14px" +
+    "z-index:3002;position:fixed;left:0;top:0;height:100%;width:100%;background:rgba(0,0,0,0.2);display:flex;flex-flow:column;justify-content:center;align-items:center;color:rgb(0,0,0,0.8); font-size: 14px" +
     "";
   var confirmContentDOM = null;
   var confirmContentStyle =
-    "width: 500px; max-height: 600px; background-color:white; border:1px solid rgb(0,0,0,0.1); display: flex;flex-flow: column ;padding: 20px; border-radius:10px";
+    "width: 450px; max-height: 600px; background-color:white; border:1px solid rgb(0,0,0,0.1); display: flex;flex-flow: column ;padding: 20px; border-radius:10px";
   var btnSuitDOM = null;
   var textDOM = null;
   var textStyle = "padding-bottom:10px;";
@@ -219,6 +219,26 @@
         dom && dom.click()       
     }
     addButton(handleClickSave, handleClickExit);
+
+    // 增加监听
+    document.addEventListener('paste', (evt) => {
+      var provider = (evt.dataTransfer != null) ? evt.dataTransfer : evt.clipboardData;
+      // console.log(provider)
+      // console.log('types',provider.types)
+      // console.log('--------text', provider.getData('Text'))
+      // console.log('--------html', provider.getData('text/html'))
+      // console.log('--------plain', provider.getData('text/plain'))
+      var html = ''
+      try {
+        html = provider.getData('text/html');
+      } catch (error) {}
+      if (html.indexOf('<img') !== -1) {
+        evt.stopPropagation()
+        myconfirm({
+          text: '粘贴的网络图片可能最终无法保存成功，建议先将图片下载到本地，再推拽到编辑区'
+        })
+      }
+    }, true)
   }
 
   window.inject = inject;

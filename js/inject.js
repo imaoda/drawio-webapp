@@ -209,11 +209,14 @@
           }
       });
       function handleClickSave() {
-        sendMsg({ event: "save" });
+        var dom = document.querySelector('[title="保存 (Cmd+S)"]') || document.querySelector('[title="save"]')
+        if (dom) dom.click()
+        else sendMsg({ event: "save" });
       }
       function handleClickExit() {
-        var dom = document.querySelector('[title="退出"]') || document.querySelector('[title="exit"]')
-        dom && dom.click()
+
+          var dom = document.querySelector('[title="退出"]') || document.querySelector('[title="exit"]')
+          dom && dom.click()       
       }
       addButton(handleClickSave, handleClickExit);
     }

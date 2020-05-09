@@ -209,10 +209,22 @@
           }
       });
       function handleClickSave() {
-        var dom = document.querySelector('[title="保存 (Cmd+S)"]') || document.querySelector('[title="save"]')
+        // var dom = document.querySelector('[title="保存 (Cmd+S)"]') || document.querySelector('[title="save"]')
+        // if (dom) dom.click()
+        // else sendMsg({ event: "save" });
+        var doms = document.querySelectorAll('[title]') || [];
+        var dom = null;
+        try {
+          for (var i = 0; i < doms.length; i++ ) {
+            var target = doms[i];
+            if (target.title && target.title.indexOf('保存')!==-1 || target.innerHTML.indexOf('保存')!==-1) dom = target;
+          }
+        } catch (error) {}
+        if (!dom) dom = document.querySelector('[title="保存 (Cmd+S)"]') || document.querySelector('[title="保存 (Ctrl+S)"]') || document.querySelector('[title="save"]');
         if (dom) dom.click()
         else sendMsg({ event: "save" });
       }
+
       function handleClickExit() {
 
           var dom = document.querySelector('[title="退出"]') || document.querySelector('[title="exit"]')

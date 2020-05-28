@@ -2,7 +2,7 @@
 
 微调了一些样式，扩展了几个 message
 
-## 个人 drawio 的部署与微调
+## 私有化 drawio 的部署与微调
 
 我们可以直接 `git clone https://github.com/jgraph/drawio` 并部署 `src/main/webapp` 目录即可
 

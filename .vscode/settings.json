@@ -1,0 +1,27 @@
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false, // prettier 开关 (不管 eslint fix)
+  "[javascript]": {
+    "editor.formatOnSave": false
+  }, // 防止被全局覆盖
+  // vscode 最新配置 2019.12.30
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+  // "eslint.autoFixOnSave": true, // eslint 自动修复开关
+  // "eslint.validate": [
+  //   "javascript",
+  //   {
+  //     "language": "typescript",
+  //     "autoFix": true
+  //   },
+  //   {
+  //     "language": "typescriptreact",
+  //     "autoFix": true
+  //   }
+  // ]
+  // 可将 prettier 设置放这里
+  // "prettier.singleQuote": true,
+  // "prettier.printWidth": 200,
+  // "prettier.trailingComma": "all"
+}

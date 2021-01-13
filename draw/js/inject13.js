@@ -195,7 +195,7 @@
       if (msg.action == "savelocal") {
           showConfirm({
             text:
-              "网络异常，请先保存到本地，稍后重试",
+              msg.msg || "网络异常，请先保存到本地，稍后重试",
             onConfirm() {
               saveLocal(msg.content);
               hideLoading();
@@ -205,6 +205,22 @@
             },
             refuseBtnText: '取消',
             confirmBtnText: '保存到本地'
+          });
+        }
+
+        // 扩展弹窗
+        if (msg.action == "toast") {
+          var type = msg.type // 可以扩展弹窗类型
+          showConfirm({
+            text: msg.msg || '未知异常',
+            onConfirm() {
+              hideLoading();
+            },
+            onRefuse() {
+              hideLoading();
+            },
+            refuseBtnText: '取消',
+            confirmBtnText: '我知道了'
           });
         }
     });
